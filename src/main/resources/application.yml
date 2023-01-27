@@ -1,0 +1,36 @@
+#TODO 配置环境
+
+# 设置使用哪个环境
+spring:
+  profiles:
+    active: dep
+---
+# 开发环境
+
+spring:
+  config:
+    activate:
+      on-profile: ${profile.active}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ssm_db?serverTimezone=UTC
+    username: root
+    password: rootroot
+    type: com.alibaba.druid.pool.DruidDataSource
+
+server:
+  port: 80
+
+---
+# 生产
+spring:
+  config:
+    activate:
+      on-profile: pro
+
+---
+# 测试
+spring:
+  config:
+    activate:
+      on-profile: test
